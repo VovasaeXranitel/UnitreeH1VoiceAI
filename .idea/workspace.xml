@@ -1,36 +1,78 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="20e23f4c-cecb-42de-8e38-531ed969c7de" name="Changes" comment="" />
+    <list default="true" id="20e23f4c-cecb-42de-8e38-531ed969c7de" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/UnitreeH1VoiceAI.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/UnitreeH1VoiceAI.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client-Interface.py" beforeDir="false" afterPath="$PROJECT_DIR$/Client-Interface.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Info Serializer.py" beforeDir="false" afterPath="$PROJECT_DIR$/Info Serializer.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Model_Downloader_Script.py" beforeDir="false" afterPath="$PROJECT_DIR$/Model_Downloader_Script.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Question - Answer Serializer.py" beforeDir="false" afterPath="$PROJECT_DIR$/Question - Answer Serializer.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RuDatasetTrainerScript.py" beforeDir="false" afterPath="$PROJECT_DIR$/RuDatasetTrainerScript.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TrainerScript.py" beforeDir="false" afterPath="$PROJECT_DIR$/TrainerScript.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 8
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "VovasaeXranitel"
+  }
 }]]></component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/VovasaeXranitel/UnitreeH1VoiceAI.git",
+    "accountId": "458c982b-c255-4c7d-b754-29a31ed2e8e4"
+  }
+}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 8
+}</component>
   <component name="ProjectId" id="2qIllIrt40beiTUPjRXtOkuIrQE" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "com.codeium.enabled": "true",
-    "git-widget-placeholder": "master"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Python.Client-Interface.executor&quot;: &quot;Run&quot;,
+    &quot;Python.Info Serializer.executor&quot;: &quot;Run&quot;,
+    &quot;Python.ModelDownloadingScript.executor&quot;: &quot;Run&quot;,
+    &quot;Python.Model_Downloader_Script.executor&quot;: &quot;Run&quot;,
+    &quot;Python.Question - Answer Serializer.executor&quot;: &quot;Run&quot;,
+    &quot;Python.TeacherScript.executor&quot;: &quot;Run&quot;,
+    &quot;Python.Tokenizer_Downloader_Script.executor&quot;: &quot;Run&quot;,
+    &quot;Python.TrainerScript.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;com.codeium.enabled&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Vovas/OneDrive/Documents/mirea_qa_model&quot;
   }
-}]]></component>
+}</component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-python-sdk-fb887030ada0-aa17d162503b-com.jetbrains.pycharm.community.sharedIndexes.bundled-PC-243.21565.199" />
+        <option value="bundled-python-sdk-1b1018131e27-aa17d162503b-com.jetbrains.pycharm.community.sharedIndexes.bundled-PC-243.22562.180" />
       </set>
     </attachedChunks>
   </component>

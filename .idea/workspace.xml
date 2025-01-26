@@ -4,14 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="20e23f4c-cecb-42de-8e38-531ed969c7de" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/UnitreeH1VoiceAI.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/UnitreeH1VoiceAI.iml" afterDir="false" />
+    <list default="true" id="20e23f4c-cecb-42de-8e38-531ed969c7de" name="Changes" comment="Somme fast minor changes for MDownloader, TDownloader, Client Interface and some other files">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Client-Interface.py" beforeDir="false" afterPath="$PROJECT_DIR$/Client-Interface.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Info Serializer.py" beforeDir="false" afterPath="$PROJECT_DIR$/Info Serializer.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Model_Downloader_Script.py" beforeDir="false" afterPath="$PROJECT_DIR$/Model_Downloader_Script.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Question - Answer Serializer.py" beforeDir="false" afterPath="$PROJECT_DIR$/Question - Answer Serializer.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RuDatasetTrainerScript.py" beforeDir="false" afterPath="$PROJECT_DIR$/RuDatasetTrainerScript.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tokenizer_Downloader_Script.py" beforeDir="false" afterPath="$PROJECT_DIR$/Tokenizer_Downloader_Script.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TrainerScript.py" beforeDir="false" afterPath="$PROJECT_DIR$/TrainerScript.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -29,46 +27,48 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN",
-    "assignee": "VovasaeXranitel"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;VovasaeXranitel&quot;
   }
-}]]></component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/VovasaeXranitel/UnitreeH1VoiceAI.git",
-    "accountId": "458c982b-c255-4c7d-b754-29a31ed2e8e4"
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/VovasaeXranitel/UnitreeH1VoiceAI.git&quot;,
+    &quot;accountId&quot;: &quot;fc8e9878-a65c-49dc-aba2-34e8a9ab8068&quot;
   }
-}]]></component>
+}</component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 8
 }</component>
   <component name="ProjectId" id="2qIllIrt40beiTUPjRXtOkuIrQE" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <OptionsSetting value="false" id="Update" />
     <ConfirmationsSetting value="2" id="Add" />
   </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Python.Client-Interface.executor&quot;: &quot;Run&quot;,
-    &quot;Python.Info Serializer.executor&quot;: &quot;Run&quot;,
-    &quot;Python.ModelDownloadingScript.executor&quot;: &quot;Run&quot;,
-    &quot;Python.Model_Downloader_Script.executor&quot;: &quot;Run&quot;,
-    &quot;Python.Question - Answer Serializer.executor&quot;: &quot;Run&quot;,
-    &quot;Python.TeacherScript.executor&quot;: &quot;Run&quot;,
-    &quot;Python.Tokenizer_Downloader_Script.executor&quot;: &quot;Run&quot;,
-    &quot;Python.TrainerScript.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;com.codeium.enabled&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Vovas/OneDrive/Documents/mirea_qa_model&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Python.Client-Interface.executor": "Run",
+    "Python.Info Serializer.executor": "Run",
+    "Python.ModelDownloadingScript.executor": "Run",
+    "Python.Model_Downloader_Script.executor": "Run",
+    "Python.Question - Answer Serializer.executor": "Run",
+    "Python.TeacherScript.executor": "Run",
+    "Python.Tokenizer_Downloader_Script.executor": "Run",
+    "Python.TrainerScript.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "com.codeium.enabled": "true",
+    "git-widget-placeholder": "master",
+    "last_opened_file_path": "C:/Users/Vovas/OneDrive/Documents/mirea_qa_model",
+    "settings.editor.selected.configurable": "org.jetbrains.plugins.github.ui.GithubSettingsConfigurable"
   }
-}</component>
+}]]></component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
@@ -86,5 +86,21 @@
       <updated>1734358120187</updated>
     </task>
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="123" />
+    <MESSAGE value="Somme fast minor changes for MDownloader, TDownloader, Client Interface and some other files" />
+    <option name="LAST_COMMIT_MESSAGE" value="Somme fast minor changes for MDownloader, TDownloader, Client Interface and some other files" />
   </component>
 </project>

@@ -1,18 +1,21 @@
 from transformers import AutoTokenizer, AutoModelForCausalLM
 
-# === Конфигурация ===
-MODEL_NAME = "ai-forever/rugpt3small_based_on_gpt2"  # Название модели
-SAVE_DIR = "local_model"  # Папка для сохранения модели и токенизатора
+# Название модели на Hugging Face
+MODEL_NAME = "ai-forever/rugpt3small_based_on_gpt2"
 
-def download_model():
+def install_and_load_model():
     # Загрузка токенизатора
     print("Загрузка токенизатора...")
     tokenizer = AutoTokenizer.from_pretrained(MODEL_NAME)
-    tokenizer.save_pretrained(SAVE_DIR)
-    print(f"Токенизатор сохранен в {SAVE_DIR}")
+    print("Токенизатор загружен.")
 
     # Загрузка модели
     print("Загрузка модели...")
     model = AutoModelForCausalLM.from_pretrained(MODEL_NAME)
-    model.save_pretrained(SAVE_DIR)
-    print(f"Модель сохранена в {SAVE_DIR}")
+    print("Модель загружена.")
+
+    return tokenizer, model
+
+if __name__ == "__main__":
+    tokenizer, model = install_and_load_model()
+    print("Модель и токенизатор готовы к использованию.")

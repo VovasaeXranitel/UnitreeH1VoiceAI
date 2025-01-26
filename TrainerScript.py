@@ -76,14 +76,12 @@ def train_model():
     # Аргументы тренировки
     print("Настройка тренировки...")
     training_args = TrainingArguments(
-        learning_rate=1e-5,  # Оптимально для fine-tuning LLM
-        warmup_steps=400,  # Warm-up для стабилизации
-        lr_scheduler_type="cosine",  # Постепенное уменьшение LR
         output_dir=OUTPUT_DIR,
         evaluation_strategy="epoch",
-        per_device_train_batch_size=10,  # Меньший размер батча для стабильности
-        per_device_eval_batch_size=10,
-        num_train_epochs=1000,  # Больше эпох для улучшения качества
+        learning_rate=3e-5,  # Уменьшенный LR для лучшего обучения
+        per_device_train_batch_size=4,  # Меньший размер батча для стабильности
+        per_device_eval_batch_size=4,
+        num_train_epochs=5,  # Больше эпох для улучшения качества
         weight_decay=0.01,
         save_strategy="epoch",
         save_total_limit=2,
@@ -119,7 +117,6 @@ def train_model():
     print("=== Детализированные метрики ===")
     for key, value in eval_metrics.items():
         print(f"{key}: {value:.4f}")
-
 
 if __name__ == "__main__":
     train_model()

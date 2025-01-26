@@ -2,24 +2,36 @@ from transformers import AutoTokenizer
 
 # === Конфигурация ===
 MODEL_NAME = "ai-forever/rugpt3small_based_on_gpt2"  # Имя модели на Hugging Face
-TOKENIZER_SAVE_PATH = "/home/vremennaya-kpu/.cache/huggingface/hub/rugpt3_tokenizer"  # Путь для сохранения токенизатора
+TOKENIZER_SAVE_PATH = "./rugpt3_tokenizer"  # Путь для сохранения токенизатора
 
-def setup_tokenizer():
-    # Загрузка токенизатора
-    print("Загрузка токенизатора...")
-    tokenizer = AutoTokenizer.from_pretrained(MODEL_NAME)
+def load_and_save_tokenizer():
+    """
+    Загружает токенизатор для модели и сохраняет его локально.
+    """
+    try:
+        print("Загрузка токенизатора...")
+        # Загружаем токенизатор с Hugging Face
+        tokenizer = AutoTokenizer.from_pretrained(MODEL_NAME)
 
-    # Сохранение токенизатора локально
-    print("Сохранение токенизатора...")
-    tokenizer.save_pretrained(TOKENIZER_SAVE_PATH)
+        print("Сохранение токенизатора локально...")
+        # Сохраняем токенизатор в указанную директорию
+        tokenizer.save_pretrained(TOKENIZER_SAVE_PATH)
 
-    print(f"Токенизатор сохранён в {TOKENIZER_SAVE_PATH}")
-    return tokenizer
+        print(f"Токенизатор успешно сохранён в {TOKENIZER_SAVE_PATH}")
+        return tokenizer
+    except Exception as e:
+        print(f"Ошибка при загрузке или сохранении токенизатора: {e}")
+        return None
 
 if __name__ == "__main__":
-    tokenizer = setup_tokenizer()
+    tokenizer = load_and_save_tokenizer()
 
-    # Пример использования токенизатора
-    text = "Привет, как у тебя дела?"
-    tokens = tokenizer(text, return_tensors="pt")
-    print("Токены:", tokens)
+    # Тестирование токенизатора
+    if tokenizer:
+        test_text = "Привет, как дела у модели?"
+        print(f"Тестовый текст: {test_text}")
+
+        # Токенизация текста
+        encoded = tokenizer(test_text, return_tensors="pt")
+        print("Токенизированный результат:")
+        print(encoded)

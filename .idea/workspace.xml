@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="20e23f4c-cecb-42de-8e38-531ed969c7de" name="Changes" comment="123">
+    <list default="true" id="20e23f4c-cecb-42de-8e38-531ed969c7de" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -45,23 +45,24 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Python.Client-Interface.executor&quot;: &quot;Run&quot;,
-    &quot;Python.Info Serializer.executor&quot;: &quot;Run&quot;,
-    &quot;Python.ModelDownloadingScript.executor&quot;: &quot;Run&quot;,
-    &quot;Python.Model_Downloader_Script.executor&quot;: &quot;Run&quot;,
-    &quot;Python.Question - Answer Serializer.executor&quot;: &quot;Run&quot;,
-    &quot;Python.TeacherScript.executor&quot;: &quot;Run&quot;,
-    &quot;Python.Tokenizer_Downloader_Script.executor&quot;: &quot;Run&quot;,
-    &quot;Python.TrainerScript.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;com.codeium.enabled&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Vovas/OneDrive/Documents/mirea_qa_model&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Python.Client-Interface.executor": "Run",
+    "Python.Client_For_Robot.executor": "Run",
+    "Python.Info Serializer.executor": "Run",
+    "Python.ModelDownloadingScript.executor": "Run",
+    "Python.Model_Downloader_Script.executor": "Run",
+    "Python.Question - Answer Serializer.executor": "Run",
+    "Python.TeacherScript.executor": "Run",
+    "Python.Tokenizer_Downloader_Script.executor": "Run",
+    "Python.TrainerScript.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "com.codeium.enabled": "true",
+    "git-widget-placeholder": "master",
+    "last_opened_file_path": "C:/Users/Vovas/OneDrive/Documents/mirea_qa_model"
   }
-}</component>
+}]]></component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
@@ -118,7 +119,15 @@
       <option name="project" value="LOCAL" />
       <updated>1737901318793</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="123">
+      <option name="closed" value="true" />
+      <created>1737903378120</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1737903378120</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">

@@ -4,10 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="20e23f4c-cecb-42de-8e38-531ed969c7de" name="Changes" comment="Added script for DB and new dataset">
-      <change afterPath="$PROJECT_DIR$/Trainer_With_Database_Script.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="20e23f4c-cecb-42de-8e38-531ed969c7de" name="Changes" comment="Added script for training on DB" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -161,13 +158,22 @@
       <option name="project" value="LOCAL" />
       <updated>1738687569169</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Added script for training on DB">
+      <option name="closed" value="true" />
+      <created>1739805137921</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1739805137921</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="123" />
     <MESSAGE value="Added some libraries for robot client" />
     <MESSAGE value="Added script for DB and new dataset" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added script for DB and new dataset" />
+    <MESSAGE value="Added script for training on DB" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added script for training on DB" />
   </component>
 </project>

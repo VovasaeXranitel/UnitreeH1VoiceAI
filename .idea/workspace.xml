@@ -4,9 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="20e23f4c-cecb-42de-8e38-531ed969c7de" name="Changes" comment="Added some libraries for robot client">
-      <change afterPath="$PROJECT_DIR$/Database_loader.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Полный_Датасет.json" afterDir="false" />
+    <list default="true" id="20e23f4c-cecb-42de-8e38-531ed969c7de" name="Changes" comment="Added script for DB and new dataset">
+      <change afterPath="$PROJECT_DIR$/Trainer_With_Database_Script.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -47,25 +46,25 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Python.Client-Interface.executor": "Run",
-    "Python.Client_For_Robot.executor": "Run",
-    "Python.Database_loader.executor": "Run",
-    "Python.Info Serializer.executor": "Run",
-    "Python.ModelDownloadingScript.executor": "Run",
-    "Python.Model_Downloader_Script.executor": "Run",
-    "Python.Question - Answer Serializer.executor": "Run",
-    "Python.TeacherScript.executor": "Run",
-    "Python.Tokenizer_Downloader_Script.executor": "Run",
-    "Python.TrainerScript.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "com.codeium.enabled": "true",
-    "git-widget-placeholder": "master",
-    "last_opened_file_path": "C:/Users/Vovas/OneDrive/Documents/mirea_qa_model"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Python.Client-Interface.executor&quot;: &quot;Run&quot;,
+    &quot;Python.Client_For_Robot.executor&quot;: &quot;Run&quot;,
+    &quot;Python.Database_loader.executor&quot;: &quot;Run&quot;,
+    &quot;Python.Info Serializer.executor&quot;: &quot;Run&quot;,
+    &quot;Python.ModelDownloadingScript.executor&quot;: &quot;Run&quot;,
+    &quot;Python.Model_Downloader_Script.executor&quot;: &quot;Run&quot;,
+    &quot;Python.Question - Answer Serializer.executor&quot;: &quot;Run&quot;,
+    &quot;Python.TeacherScript.executor&quot;: &quot;Run&quot;,
+    &quot;Python.Tokenizer_Downloader_Script.executor&quot;: &quot;Run&quot;,
+    &quot;Python.TrainerScript.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;com.codeium.enabled&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Vovas/OneDrive/Documents/mirea_qa_model&quot;
   }
-}]]></component>
+}</component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
@@ -154,12 +153,21 @@
       <option name="project" value="LOCAL" />
       <updated>1738673872617</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Added script for DB and new dataset">
+      <option name="closed" value="true" />
+      <created>1738687569169</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1738687569169</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="123" />
     <MESSAGE value="Added some libraries for robot client" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added some libraries for robot client" />
+    <MESSAGE value="Added script for DB and new dataset" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added script for DB and new dataset" />
   </component>
 </project>

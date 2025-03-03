@@ -24,7 +24,7 @@ cursor.execute(f"""
 conn.commit()
 
 # === Загрузка JSON-файла ===
-JSON_FILE_PATH = r"C:\UnitreeH1VoiceAI\Полный_Датасет.json"  # Укажите путь к файлу JSON
+JSON_FILE_PATH = r"Полный_Датасет.json"  # Укажите путь к файлу JSON
 
 with open(JSON_FILE_PATH, "r", encoding="utf-8") as file:
     data = json.load(file)

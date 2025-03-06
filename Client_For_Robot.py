@@ -7,6 +7,10 @@ import logging
 import speech_recognition as sr
 import numpy as np
 from scipy.signal import butter, lfilter
+import sys
+
+# Установка кодировки для вывода в консоль
+sys.stdout.reconfigure(encoding='utf-8')
 
 # Конфигурация
 SERVER_URL = "http://192.168.1.100:8000/predict/"  # Замените на IP вашего сервера

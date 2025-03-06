@@ -4,13 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="20e23f4c-cecb-42de-8e38-531ed969c7de" name="Changes" comment="Sorted files into folder">
-      <change beforePath="$PROJECT_DIR$/.idea/UnitreeH1VoiceAI.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/UnitreeH1VoiceAI.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="20e23f4c-cecb-42de-8e38-531ed969c7de" name="Changes" comment="Rewrited client for robot">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/API Client.py" beforeDir="false" afterPath="$PROJECT_DIR$/Archive/API Client.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Client-Interface.py" beforeDir="false" afterPath="$PROJECT_DIR$/Archive/Client-Interface.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Client_For_Robot.py" beforeDir="false" afterPath="$PROJECT_DIR$/Client_For_Robot.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

@@ -1,207 +1,288 @@
+# Client_For_Robot.py - версия с поддержкой Bluetooth-устройств
 import requests
-import pyaudio
-import wave
-import io
-import pygame
-import logging
 import speech_recognition as sr
+import sounddevice as sd
 import numpy as np
-from scipy.signal import butter, lfilter
-import sys
-
-# Установка кодировки для вывода в консоль
-sys.stdout.reconfigure(encoding='utf-8')
+import scipy.io.wavfile as wav
+import tempfile
+import os
+import io
+import time
+from scipy.io import wavfile
 
 # Конфигурация
 SERVER_URL = "http://192.168.1.100:8000/predict/"  # Замените на IP вашего сервера
-logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
+SAMPLE_RATE = 44100  # Частота дискретизации
 
-def butter_bandpass(lowcut, highcut, fs, order=5):
-    nyq = 0.5 * fs
-    low = lowcut / nyq
-    high = highcut / nyq
-    b, a = butter(order, [low, high], btype='band')
-    return b, a
-
-def butter_bandpass_filter(data, lowcut, highcut, fs, order=5):
-    b, a = butter_bandpass(lowcut, highcut, fs, order=order)
-    y = lfilter(b, a, data)
-    return y
-
-def remove_noise(audio_data, rate):
-    # Конвертация байтов в numpy array
-    audio_array = np.frombuffer(audio_data, dtype=np.int16)
-
-    # Применение полосового фильтра для основных частот человеческого голоса (примерно 300-3400 Гц)
-    filtered_audio = butter_bandpass_filter(audio_array, 300, 3400, rate, order=6)
-
-    # Нормализация громкости
-    max_value = np.max(np.abs(filtered_audio))
-    if max_value > 0:
-        filtered_audio = filtered_audio * (32767 / max_value) * 0.9
-
-    # Конвертация обратно в байты
-    filtered_audio = filtered_audio.astype(np.int16).tobytes()
-    return filtered_audio
-
+# Функция для вывода списка аудиоустройств с улучшенной информацией
 def list_audio_devices():
-    p = pyaudio.PyAudio()
+    # Обновляем список устройств (важно для Bluetooth-устройств)
+    sd.check_output_settings()
+    sd.check_input_settings()
+
+    # Получаем обновленный список всех устройств
+    devices = sd.query_devices()
+
     print("\nДоступные устройства ввода:")
     input_devices = []
-    output_devices = []
-
-    for i in range(p.get_device_count()):
-        dev_info = p.get_device_info_by_index(i)
-        if dev_info.get('maxInputChannels') > 0:
-            input_devices.append((i, dev_info.get('name')))
-            print(f"{len(input_devices)-1}. {dev_info.get('name')} (ID: {i})")
+    for i, device in enumerate(devices):
+        if device['max_input_channels'] > 0:
+            device_type = "Bluetooth" if "bluetooth" in device['name'].lower() else "Проводное"
+            input_devices.append((i, device['name'], device_type))
+            print(f"{len(input_devices)-1}. {device['name']} (ID: {i}, Тип: {device_type})")
 
     print("\nДоступные устройства вывода:")
-    for i in range(p.get_device_count()):
-        dev_info = p.get_device_info_by_index(i)
-        if dev_info.get('maxOutputChannels') > 0:
-            output_devices.append((i, dev_info.get('name')))
-            print(f"{len(output_devices)-1}. {dev_info.get('name')} (ID: {i})")
-    p.terminate()
+    output_devices = []
+    for i, device in enumerate(devices):
+        if device['max_output_channels'] > 0:
+            device_type = "Bluetooth" if "bluetooth" in device['name'].lower() else "Проводное"
+            output_devices.append((i, device['name'], device_type))
+            print(f"{len(output_devices)-1}. {device['name']} (ID: {i}, Тип: {device_type})")
+
     return input_devices, output_devices
 
-def record_audio(input_device_index, duration=5, rate=16000):
-    CHUNK = 1024
-    FORMAT = pyaudio.paInt16
-    CHANNELS = 1
+# Функция для выбора устройств
+def select_devices():
+    print("Сканирование аудиоустройств...")
+    # Делаем небольшую паузу, чтобы Bluetooth-устройства успели инициализироваться
+    time.sleep(1)
 
-    p = pyaudio.PyAudio()
-    logging.info(f"Запись с устройства ID: {input_device_index} на {duration} секунд...")
-    try:
-        stream = p.open(format=FORMAT,
-                        channels=CHANNELS,
-                        rate=rate,
-                        input=True,
-                        input_device_index=input_device_index,
-                        frames_per_buffer=CHUNK)
-
-        frames = []
-        for i in range(0, int(rate / CHUNK * duration)):
-            data = stream.read(CHUNK)
-            frames.append(data)
-
-        stream.stop_stream()
-        stream.close()
-
-        # Сохраняем в буфер
-        audio_data = b''.join(frames)
-
-        # Очистка шума
-        clean_audio = remove_noise(audio_data, rate)
-
-        return clean_audio, rate
-    except Exception as e:
-        logging.error(f"Ошибка при записи звука: {e}")
-        return None, None
-    finally:
-        p.terminate()
-
-def play_audio(audio_bytes, output_device_index):
-    try:
-        pygame.mixer.quit()
-        pygame.mixer.init(devicename=str(output_device_index))
-        sound_file = io.BytesIO(audio_bytes)
-        pygame.mixer.music.load(sound_file)
-        pygame.mixer.music.play()
-        while pygame.mixer.music.get_busy():
-            pygame.time.Clock().tick(10)
-    except Exception as e:
-        logging.error(f"Ошибка воспроизведения звука: {e}")
-
-def send_text_to_api(text):
-    try:
-        logging.info(f"Отправка текста на сервер: '{text}'")
-        response = requests.post(SERVER_URL, json={"question": text})
-        if response.status_code == 200:
-            logging.info("Получен ответ от сервера")
-            return response.content
-        else:
-            logging.error(f"Ошибка сервера: {response.status_code}, {response.text}")
-            return None
-    except Exception as e:
-        logging.error(f"Ошибка при отправке запроса: {e}")
-        return None
-
-def chat_with_model(input_device_id, output_device_id):
-    while True:
-        print("\nВыберите действие:")
-        print("1. Отправить текст")
-        print("2. Отправить голосовой запрос")
-        print("3. Выход")
-
-        choice = input("Ваш выбор: ").strip()
-
-        if choice == "1":
-            user_text = input("Введите ваш запрос: ")
-            if user_text.lower() in ['выход', 'exit', 'quit']:
-                break
-
-            audio_response = send_text_to_api(user_text)
-            if audio_response:
-                play_audio(audio_response, output_device_id)
-
-        elif choice == "2":
-            duration = int(input("Длительность записи (секунды): ") or "5")
-            audio_data, rate = record_audio(input_device_id, duration)
-
-            if audio_data:
-                # Преобразование аудио в текст
-                recognizer = sr.Recognizer()
-
-                # Преобразование очищенного аудио в формат WAV
-                wav_bytes = io.BytesIO()
-                with wave.open(wav_bytes, 'wb') as wav_file:
-                    wav_file.setnchannels(1)
-                    wav_file.setsampwidth(2)  # 2 bytes for 16-bit audio
-                    wav_file.setframerate(rate)
-                    wav_file.writeframes(audio_data)
-                wav_bytes.seek(0)
-                with sr.AudioFile(wav_bytes) as source:
-                    audio = recognizer.record(source)
-                    try:
-                        user_text = recognizer.recognize_google(audio, language="ru-RU")
-                        print(f"Распознанный текст: {user_text}")
-
-                        audio_response = send_text_to_api(user_text)
-                        if audio_response:
-                            play_audio(audio_response, output_device_id)
-                    except sr.UnknownValueError:
-                        print("Речь не распознана")
-                    except sr.RequestError as e:
-                        print(f"Ошибка сервиса распознавания: {e}")
-
-        elif choice == "3":
-            break
-
-        else:
-            print("Неверный выбор. Попробуйте снова.")
-
-if __name__ == "__main__":
-    print("Инициализация аудиоустройств...")
     input_devices, output_devices = list_audio_devices()
 
-    if not input_devices:
-        logging.error("Не найдены устройства ввода звука!")
-        exit(1)
-    if not output_devices:
-        logging.error("Не найдены устройства вывода звука!")
-        exit(1)
+    # Выбор устройства ввода
+    input_id = None
+    while input_id is None:
+        try:
+            input_choice = int(input("\nВыберите номер устройства ввода: "))
+            if 0 <= input_choice < len(input_devices):
+                input_id = input_devices[input_choice][0]
+                print(f"Выбрано устройство ввода: {input_devices[input_choice][1]} (Тип: {input_devices[input_choice][2]})")
+            else:
+                print("Некорректный выбор. Пожалуйста, выберите из списка.")
+        except ValueError:
+            print("Введите числовое значение.")
 
-    input_choice = int(input("\nВыберите устройство ввода (номер): ") or "0")
-    output_choice = int(input("Выберите устройство вывода (номер): ") or "0")
+    # Выбор устройства вывода
+    output_id = None
+    while output_id is None:
+        try:
+            output_choice = int(input("Выберите номер устройства вывода: "))
+            if 0 <= output_choice < len(output_devices):
+                output_id = output_devices[output_choice][0]
+                print(f"Выбрано устройство вывода: {output_devices[output_choice][1]} (Тип: {output_devices[output_choice][2]})")
+            else:
+                print("Некорректный выбор. Пожалуйста, выберите из списка.")
+        except ValueError:
+            print("Введите числовое значение.")
 
-    if 0 <= input_choice < len(input_devices) and 0 <= output_choice < len(output_devices):
-        input_device_id = input_devices[input_choice][0]
-        output_device_id = output_devices[output_choice][0]
+    return input_id, output_id
 
-        logging.info(f"Выбрано устройство ввода: {input_devices[input_choice][1]}")
-        logging.info(f"Выбрано устройство вывода: {output_devices[output_choice][1]}")
+# Функция для воспроизведения аудио с учетом специфики Bluetooth-устройств
+def play_audio(audio_data, sample_rate, output_device=None):
+    try:
+        # Получаем информацию о выбранном устройстве
+        device_info = sd.query_devices(output_device)
+        device_name = device_info['name']
 
-        chat_with_model(input_device_id, output_device_id)
-    else:
-        logging.error("Неверный выбор устройства!")
+        # Проверяем, является ли устройство Bluetooth
+        is_bluetooth = "bluetooth" in device_name.lower()
+
+        if is_bluetooth:
+            print(f"Воспроизведение через Bluetooth-устройство: {device_name}")
+
+            # Для Bluetooth устройств иногда нужна небольшая пауза перед воспроизведением
+            time.sleep(0.5)
+
+            # Конвертируем аудио в 16-бит (часто более стабильно для Bluetooth)
+            if audio_data.dtype != np.int16:
+                if audio_data.dtype == np.float32:
+                    audio_data = np.int16(audio_data * 32767)
+                else:
+                    audio_data = audio_data.astype(np.int16)
+
+        # Устанавливаем устройство вывода как текущее
+        sd.default.device = output_device
+
+        # Воспроизведение аудио через sounddevice с увеличенным буфером для Bluetooth
+        blocksize = 4096 if is_bluetooth else 1024
+
+        sd.play(audio_data, sample_rate, device=output_device, blocksize=blocksize)
+        sd.wait()  # Ждем окончания воспроизведения
+
+        # Добавляем небольшую паузу после воспроизведения для Bluetooth-устройств
+        if is_bluetooth:
+            time.sleep(0.5)
+
+    except Exception as e:
+        print(f"Ошибка воспроизведения аудио: {e}")
+        print("Пробую альтернативный метод воспроизведения...")
+
+        try:
+            # Альтернативный метод воспроизведения
+            temp_file = tempfile.NamedTemporaryFile(suffix=".wav", delete=False)
+            temp_filename = temp_file.name
+            temp_file.close()
+
+            # Сохраняем аудио во временный файл
+            wavfile.write(temp_filename, sample_rate, audio_data)
+
+            # Используем os.system для воспроизведения через системный плеер
+            if os.name == 'nt':  # Windows
+                os.system(f'start {temp_filename}')
+            elif os.name == 'posix':  # Linux/Mac
+                os.system(f'aplay {temp_filename}')
+
+            # Даем время на воспроизведение
+            time.sleep(5)
+
+            # Удаляем временный файл
+            try:
+                os.unlink(temp_filename)
+            except:
+                pass
+
+        except Exception as e2:
+            print(f"Альтернативный метод тоже не сработал: {e2}")
+
+# Функция для преобразования речи в текст (STT) с использованием sounddevice
+def listen(input_device=None, duration=5):
+    print("Слушаю...")
+
+    try:
+        # Получаем информацию о выбранном устройстве
+        device_info = sd.query_devices(input_device)
+        device_name = device_info['name']
+
+        # Проверяем, является ли устройство Bluetooth
+        is_bluetooth = "bluetooth" in device_name.lower()
+
+        # Параметры записи зависят от типа устройства
+        channels = 1  # Mono запись
+        blocksize = 4096 if is_bluetooth else 1024
+
+        if is_bluetooth:
+            print(f"Запись с Bluetooth-микрофона: {device_name}")
+            # Для Bluetooth устройств может потребоваться пауза перед записью
+            time.sleep(0.5)
+
+        # Записываем аудио с выбранного устройства
+        recording = sd.rec(int(duration * SAMPLE_RATE), samplerate=SAMPLE_RATE,
+                           channels=channels, dtype='float32', device=input_device,
+                           blocksize=blocksize)
+
+        print("Запись...")
+        sd.wait()  # Ждем окончания записи
+        print("Запись завершена")
+
+        # Создаем временный WAV файл для speech_recognition
+        with tempfile.NamedTemporaryFile(suffix=".wav", delete=False) as temp_file:
+            temp_filename = temp_file.name
+
+        # Нормализуем аудио и сохраняем как WAV
+        recording = np.int16(recording * 32767)
+        wav.write(temp_filename, SAMPLE_RATE, recording)
+
+        # Используем speech_recognition для распознавания
+        recognizer = sr.Recognizer()
+        with sr.AudioFile(temp_filename) as source:
+            audio = recognizer.record(source)
+
+        # Удаляем временный файл
+        try:
+            os.unlink(temp_filename)
+        except:
+            pass
+
+        try:
+            print("Распознаю...")
+            text = recognizer.recognize_google(audio, language='ru-RU')
+            print(f"Вы сказали: {text}")
+            return text
+        except sr.UnknownValueError:
+            print("Не удалось распознать речь.")
+            return None
+        except sr.RequestError as e:
+            print(f"Ошибка подключения к сервису распознавания речи: {e}")
+            return None
+    except Exception as e:
+        print(f"Ошибка при записи аудио: {e}")
+        return None
+
+# Функция для обновления списка устройств
+def refresh_devices():
+    print("Обновление списка устройств...")
+    # Сбрасываем кэш аудиоустройств
+    sd._terminate()
+    sd._initialize()
+    time.sleep(1)  # Даем время на инициализацию
+    return list_audio_devices()
+
+# Главная функция, которая организует обмен сообщениями
+def chat_with_model():
+    # Выбор устройств
+    input_device, output_device = select_devices()
+    print(f"Выбрано устройство ввода ID: {input_device}")
+    print(f"Выбрано устройство вывода ID: {output_device}")
+
+    print("\nСистема готова к работе.")
+    print("Команды:")
+    print("- 'обновить устройства' - обновить список аудиоустройств")
+    print("- 'выход' - завершить программу")
+    print("\nНачните говорить...")
+
+    while True:
+        # Получаем голосовой ввод
+        user_input = listen(input_device=input_device)
+        if user_input is None:
+            print("Попробуйте еще раз или скажите 'обновить устройства' для обновления списка.")
+            continue
+
+        # Обработка специальных команд
+        if user_input.lower() == "выход":
+            print("Завершаю общение.")
+            break
+        elif user_input.lower() in ["обновить устройства", "сменить устройства", "обновить"]:
+            input_devices, output_devices = refresh_devices()
+            input_device, output_device = select_devices()
+            print(f"Выбрано устройство ввода ID: {input_device}")
+            print(f"Выбрано устройство вывода ID: {output_device}")
+            continue
+
+        # Отправляем запрос к нейросети
+        try:
+            print("Отправка запроса на сервер...")
+            # Отправляем запрос и указываем, что ожидаем аудио в ответе
+            response = requests.post(
+                SERVER_URL,
+                json={"question": user_input},
+                headers={"Accept": "audio/wav"}  # Запрашиваем аудио формат
+            )
+
+            if response.status_code == 200:
+                # Проверяем тип контента в ответе
+                content_type = response.headers.get('Content-Type', '')
+
+                if 'audio' in content_type:
+                    # Получаем аудио ответ
+                    audio_data = io.BytesIO(response.content)
+
+                    # Преобразуем аудио-файл в numpy массив
+                    sample_rate, audio_array = wavfile.read(audio_data)
+
+                    # Воспроизводим аудио
+                    print("Воспроизвожу ответ...")
+                    play_audio(audio_array, sample_rate, output_device)
+                else:
+                    # Если пришел текстовый ответ, а не аудио
+                    try:
+                        model_response = response.json().get("response", "Нет ответа")
+                        print(f"Текстовый ответ: {model_response}")
+                    except:
+                        print("Получен неизвестный формат ответа")
+            else:
+                print("Ошибка:", response.status_code, response.text)
+        except Exception as e:
+            print(f"Ошибка при отправке запроса: {e}")
+
+if __name__ == "__main__":
+    chat_with_model()

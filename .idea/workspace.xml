@@ -4,21 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="20e23f4c-cecb-42de-8e38-531ed969c7de" name="Changes" comment="Added learning on GPU for new trainer script">
+    <list default="true" id="20e23f4c-cecb-42de-8e38-531ed969c7de" name="Changes" comment="Sorted files into folder">
+      <change beforePath="$PROJECT_DIR$/.idea/UnitreeH1VoiceAI.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/UnitreeH1VoiceAI.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Database_loader.py" beforeDir="false" afterPath="$PROJECT_DIR$/Archive/Database_loader.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Info Serializer.py" beforeDir="false" afterPath="$PROJECT_DIR$/Archive/Info Serializer.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Model_Downloader_Script.py" beforeDir="false" afterPath="$PROJECT_DIR$/Archive/Model_Downloader_Script.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Question - Answer Serializer.py" beforeDir="false" afterPath="$PROJECT_DIR$/Archive/Question - Answer Serializer.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RuDatasetTrainerScript.py" beforeDir="false" afterPath="$PROJECT_DIR$/Archive/RuDatasetTrainerScript.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server_Initializer.py" beforeDir="false" afterPath="$PROJECT_DIR$/Archive/Server_Initializer.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tokenizer_Downloader_Script.py" beforeDir="false" afterPath="$PROJECT_DIR$/Archive/Tokenizer_Downloader_Script.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TrainerScript.py" beforeDir="false" afterPath="$PROJECT_DIR$/Archive/TrainerScript.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Trainer_With_Database_Script.py" beforeDir="false" afterPath="$PROJECT_DIR$/Archive/Trainer_With_Database_Script.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/formatted_data_prepared.json" beforeDir="false" afterPath="$PROJECT_DIR$/Archive/formatted_data_prepared.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Вопрос-Ответ-ИИИ-Файл.json" beforeDir="false" afterPath="$PROJECT_DIR$/Archive/Вопрос-Ответ-ИИИ-Файл.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Данные-СНО-ИИИ-Файл.json" beforeDir="false" afterPath="$PROJECT_DIR$/Archive/Данные-СНО-ИИИ-Файл.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Полный_Датасет.json" beforeDir="false" afterPath="$PROJECT_DIR$/Archive/Полный_Датасет.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/API Client.py" beforeDir="false" afterPath="$PROJECT_DIR$/Archive/API Client.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client-Interface.py" beforeDir="false" afterPath="$PROJECT_DIR$/Archive/Client-Interface.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client_For_Robot.py" beforeDir="false" afterPath="$PROJECT_DIR$/Client_For_Robot.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -58,28 +50,29 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Python.Client-Interface.executor": "Run",
-    "Python.Client_For_Robot.executor": "Run",
-    "Python.Database_loader.executor": "Run",
-    "Python.Info Serializer.executor": "Run",
-    "Python.ModelDownloadingScript.executor": "Run",
-    "Python.Model_Downloader_Script.executor": "Run",
-    "Python.Question - Answer Serializer.executor": "Run",
-    "Python.TeacherScript.executor": "Run",
-    "Python.Tokenizer_Downloader_Script.executor": "Run",
-    "Python.TrainerScript.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "com.codeium.enabled": "true",
-    "git-widget-placeholder": "master",
-    "last_opened_file_path": "C:/Users/Vovas/OneDrive/Documents/mirea_qa_model",
-    "settings.editor.selected.configurable": "preferences.pluginManager"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Python.Client-Interface.executor&quot;: &quot;Run&quot;,
+    &quot;Python.Client_For_Robot.executor&quot;: &quot;Run&quot;,
+    &quot;Python.Database_loader.executor&quot;: &quot;Run&quot;,
+    &quot;Python.Info Serializer.executor&quot;: &quot;Run&quot;,
+    &quot;Python.ModelDownloadingScript.executor&quot;: &quot;Run&quot;,
+    &quot;Python.Model_Downloader_Script.executor&quot;: &quot;Run&quot;,
+    &quot;Python.Question - Answer Serializer.executor&quot;: &quot;Run&quot;,
+    &quot;Python.TeacherScript.executor&quot;: &quot;Run&quot;,
+    &quot;Python.Tokenizer_Downloader_Script.executor&quot;: &quot;Run&quot;,
+    &quot;Python.TrainerScript.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;com.codeium.enabled&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/PyCharmPythonProjects/UpravleniyeRobotamiPredmet&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\PyCharmPythonProjects\UnitreeH1VoiceAI\Archive" />
       <recent name="C:\UnitreeH1VoiceAI\Archive" />
       <recent name="C:\UnitreeH1VoiceAI" />
     </key>
@@ -87,7 +80,7 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-python-sdk-1b1018131e27-aa17d162503b-com.jetbrains.pycharm.community.sharedIndexes.bundled-PC-243.22562.180" />
+        <option value="bundled-python-sdk-14705d77f0bb-aa17d162503b-com.jetbrains.pycharm.community.sharedIndexes.bundled-PC-243.25659.43" />
       </set>
     </attachedChunks>
   </component>
@@ -196,7 +189,15 @@
       <option name="project" value="LOCAL" />
       <updated>1739808460583</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="Sorted files into folder">
+      <option name="closed" value="true" />
+      <created>1741000998982</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1741000998982</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -205,6 +206,7 @@
     <MESSAGE value="Added script for DB and new dataset" />
     <MESSAGE value="Added script for training on DB" />
     <MESSAGE value="Added learning on GPU for new trainer script" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added learning on GPU for new trainer script" />
+    <MESSAGE value="Sorted files into folder" />
+    <option name="LAST_COMMIT_MESSAGE" value="Sorted files into folder" />
   </component>
 </project>

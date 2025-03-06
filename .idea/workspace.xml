@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="20e23f4c-cecb-42de-8e38-531ed969c7de" name="Changes" comment="Rewrited client for robot">
+    <list default="true" id="20e23f4c-cecb-42de-8e38-531ed969c7de" name="Changes" comment="Added switching of input and output audio devices">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -192,7 +192,15 @@
       <option name="project" value="LOCAL" />
       <updated>1741000998982</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="Added switching of input and output audio devices">
+      <option name="closed" value="true" />
+      <created>1741284123376</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1741284123376</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -202,6 +210,7 @@
     <MESSAGE value="Added script for training on DB" />
     <MESSAGE value="Added learning on GPU for new trainer script" />
     <MESSAGE value="Sorted files into folder" />
-    <option name="LAST_COMMIT_MESSAGE" value="Sorted files into folder" />
+    <MESSAGE value="Added switching of input and output audio devices" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added switching of input and output audio devices" />
   </component>
 </project>

@@ -1,4 +1,3 @@
-# Client_For_Robot.py - версия с поддержкой Bluetooth-устройств
 import requests
 import speech_recognition as sr
 import sounddevice as sd
@@ -9,10 +8,45 @@ import os
 import io
 import time
 from scipy.io import wavfile
+from scipy.signal import butter, lfilter, freqz
 
 # Конфигурация
 SERVER_URL = "http://192.168.1.100:8000/predict/"  # Замените на IP вашего сервера
 SAMPLE_RATE = 44100  # Частота дискретизации
+
+
+# Функции для фильтрации шума
+def butter_bandpass(lowcut, highcut, fs, order=5):
+    nyq = 0.5 * fs
+    low = lowcut / nyq
+    high = highcut / nyq
+    b, a = butter(order, [low, high], btype='band')
+    return b, a
+
+
+def butter_bandpass_filter(data, lowcut, highcut, fs, order=5):
+    b, a = butter_bandpass(lowcut, highcut, fs, order=order)
+    y = lfilter(b, a, data)
+    return y
+
+
+def denoise_audio(audio_data, fs, lowcut=300, highcut=3000):
+    # Полосовой фильтр для выделения частот человеческого голоса (примерно 300-3000 Гц)
+    filtered_audio = butter_bandpass_filter(audio_data, lowcut, highcut, fs)
+
+    # Нормализация аудио
+    max_val = np.max(np.abs(filtered_audio))
+    if max_val > 0:
+        normalized_audio = filtered_audio / max_val * 0.9  # 90% от максимальной амплитуды
+    else:
+        normalized_audio = filtered_audio
+
+    # Шумоподавление с помощью порогового значения
+    threshold = 0.05  # Порог шума (настраиваемый параметр)
+    noise_gate = np.where(np.abs(normalized_audio) < threshold, 0, normalized_audio)
+
+    return noise_gate
+
 
 # Функция для вывода списка аудиоустройств с улучшенной информацией
 def list_audio_devices():
@@ -29,7 +63,7 @@ def list_audio_devices():
         if device['max_input_channels'] > 0:
             device_type = "Bluetooth" if "bluetooth" in device['name'].lower() else "Проводное"
             input_devices.append((i, device['name'], device_type))
-            print(f"{len(input_devices)-1}. {device['name']} (ID: {i}, Тип: {device_type})")
+            print(f"{len(input_devices) - 1}. {device['name']} (ID: {i}, Тип: {device_type})")
 
     print("\nДоступные устройства вывода:")
     output_devices = []
@@ -37,9 +71,10 @@ def list_audio_devices():
         if device['max_output_channels'] > 0:
             device_type = "Bluetooth" if "bluetooth" in device['name'].lower() else "Проводное"
             output_devices.append((i, device['name'], device_type))
-            print(f"{len(output_devices)-1}. {device['name']} (ID: {i}, Тип: {device_type})")
+            print(f"{len(output_devices) - 1}. {device['name']} (ID: {i}, Тип: {device_type})")
 
     return input_devices, output_devices
+
 
 # Функция для выбора устройств
 def select_devices():
@@ -48,7 +83,6 @@ def select_devices():
     time.sleep(1)
 
     input_devices, output_devices = list_audio_devices()
-
     # Выбор устройства ввода
     input_id = None
     while input_id is None:
@@ -56,7 +90,8 @@ def select_devices():
             input_choice = int(input("\nВыберите номер устройства ввода: "))
             if 0 <= input_choice < len(input_devices):
                 input_id = input_devices[input_choice][0]
-                print(f"Выбрано устройство ввода: {input_devices[input_choice][1]} (Тип: {input_devices[input_choice][2]})")
+                print(
+                    f"Выбрано устройство ввода: {input_devices[input_choice][1]} (Тип: {input_devices[input_choice][2]})")
             else:
                 print("Некорректный выбор. Пожалуйста, выберите из списка.")
         except ValueError:
@@ -69,13 +104,15 @@ def select_devices():
             output_choice = int(input("Выберите номер устройства вывода: "))
             if 0 <= output_choice < len(output_devices):
                 output_id = output_devices[output_choice][0]
-                print(f"Выбрано устройство вывода: {output_devices[output_choice][1]} (Тип: {output_devices[output_choice][2]})")
+                print(
+                    f"Выбрано устройство вывода: {output_devices[output_choice][1]} (Тип: {output_devices[output_choice][2]})")
             else:
                 print("Некорректный выбор. Пожалуйста, выберите из списка.")
         except ValueError:
             print("Введите числовое значение.")
 
     return input_id, output_id
+
 
 # Функция для воспроизведения аудио с учетом специфики Bluetooth-устройств
 def play_audio(audio_data, sample_rate, output_device=None):
@@ -89,7 +126,6 @@ def play_audio(audio_data, sample_rate, output_device=None):
 
         if is_bluetooth:
             print(f"Воспроизведение через Bluetooth-устройство: {device_name}")
-
             # Для Bluetooth устройств иногда нужна небольшая пауза перед воспроизведением
             time.sleep(0.5)
 
@@ -112,7 +148,6 @@ def play_audio(audio_data, sample_rate, output_device=None):
         # Добавляем небольшую паузу после воспроизведения для Bluetooth-устройств
         if is_bluetooth:
             time.sleep(0.5)
-
     except Exception as e:
         print(f"Ошибка воспроизведения аудио: {e}")
         print("Пробую альтернативный метод воспроизведения...")
@@ -144,6 +179,7 @@ def play_audio(audio_data, sample_rate, output_device=None):
         except Exception as e2:
             print(f"Альтернативный метод тоже не сработал: {e2}")
 
+
 # Функция для преобразования речи в текст (STT) с использованием sounddevice
 def listen(input_device=None, duration=5):
     print("Слушаю...")
@@ -172,20 +208,28 @@ def listen(input_device=None, duration=5):
 
         print("Запись...")
         sd.wait()  # Ждем окончания записи
-        print("Запись завершена")
+        print("Запись завершена. Обработка аудио...")
+
+        # Применяем шумоподавление и фильтрацию
+        recording = recording.flatten()  # Преобразуем в одномерный массив, если запись многоканальная
+        cleaned_recording = denoise_audio(recording, SAMPLE_RATE)
+        print("Аудио очищено от шумов")
 
         # Создаем временный WAV файл для speech_recognition
         with tempfile.NamedTemporaryFile(suffix=".wav", delete=False) as temp_file:
             temp_filename = temp_file.name
 
         # Нормализуем аудио и сохраняем как WAV
-        recording = np.int16(recording * 32767)
-        wav.write(temp_filename, SAMPLE_RATE, recording)
+        cleaned_recording = np.int16(cleaned_recording * 32767)
+        wav.write(temp_filename, SAMPLE_RATE, cleaned_recording)
 
         # Используем speech_recognition для распознавания
         recognizer = sr.Recognizer()
         with sr.AudioFile(temp_filename) as source:
             audio = recognizer.record(source)
+            # Дополнительная настройка для шумоподавления в speech_recognition
+            recognizer.dynamic_energy_threshold = True
+            recognizer.energy_threshold = 300  # Настраиваемый порог энергии
 
         # Удаляем временный файл
         try:
@@ -208,6 +252,7 @@ def listen(input_device=None, duration=5):
         print(f"Ошибка при записи аудио: {e}")
         return None
 
+
 # Функция для обновления списка устройств
 def refresh_devices():
     print("Обновление списка устройств...")
@@ -216,6 +261,7 @@ def refresh_devices():
     sd._initialize()
     time.sleep(1)  # Даем время на инициализацию
     return list_audio_devices()
+
 
 # Главная функция, которая организует обмен сообщениями
 def chat_with_model():
@@ -283,6 +329,7 @@ def chat_with_model():
                 print("Ошибка:", response.status_code, response.text)
         except Exception as e:
             print(f"Ошибка при отправке запроса: {e}")
+
 
 if __name__ == "__main__":
     chat_with_model()

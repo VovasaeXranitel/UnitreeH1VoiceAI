@@ -8,7 +8,7 @@ import os
 import io
 import time
 from scipy.io import wavfile
-from scipy.signal import butter, lfilter, freqz
+from scipy.signal import butter, lfilter
 
 # Конфигурация
 SERVER_URL = "http://192.168.1.100:8000/predict/"  # Замените на IP вашего сервера

@@ -4,7 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="20e23f4c-cecb-42de-8e38-531ed969c7de" name="Changes" comment="Cleared some import" />
+    <list default="true" id="20e23f4c-cecb-42de-8e38-531ed969c7de" name="Changes" comment="Cleared some import">
+      <change afterPath="$PROJECT_DIR$/Client_For_Robot_Ollama_Test.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -47,6 +50,7 @@
   &quot;keyToString&quot;: {
     &quot;Python.Client-Interface.executor&quot;: &quot;Run&quot;,
     &quot;Python.Client_For_Robot.executor&quot;: &quot;Run&quot;,
+    &quot;Python.Client_For_Robot_Ollama_Test.executor&quot;: &quot;Run&quot;,
     &quot;Python.Database_loader.executor&quot;: &quot;Run&quot;,
     &quot;Python.Info Serializer.executor&quot;: &quot;Run&quot;,
     &quot;Python.ModelDownloadingScript.executor&quot;: &quot;Run&quot;,

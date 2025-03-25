@@ -4,10 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="20e23f4c-cecb-42de-8e38-531ed969c7de" name="Changes" comment="Some minor changes">
-      <change afterPath="$PROJECT_DIR$/Client_For_Robot_With_Vosk.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/TestsWithIsaacSim/TestScriptForIsaacSim.py" afterDir="false" />
+    <list default="true" id="20e23f4c-cecb-42de-8e38-531ed969c7de" name="Changes" comment="Rewrited client for VOSK STT">
+      <change afterPath="$PROJECT_DIR$/models/medium.pt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client_For_Robot_With_Vosk.py" beforeDir="false" afterPath="$PROJECT_DIR$/Client_For_Robot_With_Vosk.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,30 +47,30 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Python.Client-Interface.executor": "Run",
-    "Python.Client_For_Robot.executor": "Run",
-    "Python.Client_For_Robot_Ollama_Test.executor": "Run",
-    "Python.Client_For_Robot_With_Vosk.executor": "Run",
-    "Python.Database_loader.executor": "Run",
-    "Python.Info Serializer.executor": "Run",
-    "Python.ModelDownloadingScript.executor": "Run",
-    "Python.Model_Downloader_Script.executor": "Run",
-    "Python.Question - Answer Serializer.executor": "Run",
-    "Python.TeacherScript.executor": "Run",
-    "Python.Tokenizer_Downloader_Script.executor": "Run",
-    "Python.TrainerScript.executor": "Run",
-    "Python.test.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "com.codeium.enabled": "true",
-    "git-widget-placeholder": "master",
-    "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "C:/PyCharmPythonProjects/UpravleniyeRobotamiPredmet",
-    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Python.Client-Interface.executor&quot;: &quot;Run&quot;,
+    &quot;Python.Client_For_Robot.executor&quot;: &quot;Run&quot;,
+    &quot;Python.Client_For_Robot_Ollama_Test.executor&quot;: &quot;Run&quot;,
+    &quot;Python.Client_For_Robot_With_Vosk.executor&quot;: &quot;Run&quot;,
+    &quot;Python.Database_loader.executor&quot;: &quot;Run&quot;,
+    &quot;Python.Info Serializer.executor&quot;: &quot;Run&quot;,
+    &quot;Python.ModelDownloadingScript.executor&quot;: &quot;Run&quot;,
+    &quot;Python.Model_Downloader_Script.executor&quot;: &quot;Run&quot;,
+    &quot;Python.Question - Answer Serializer.executor&quot;: &quot;Run&quot;,
+    &quot;Python.TeacherScript.executor&quot;: &quot;Run&quot;,
+    &quot;Python.Tokenizer_Downloader_Script.executor&quot;: &quot;Run&quot;,
+    &quot;Python.TrainerScript.executor&quot;: &quot;Run&quot;,
+    &quot;Python.test.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;com.codeium.enabled&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/PyCharmPythonProjects/UpravleniyeRobotamiPredmet&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\PyCharmPythonProjects\UnitreeH1VoiceAI\Archive" />
@@ -270,7 +270,15 @@
       <option name="project" value="LOCAL" />
       <updated>1742225611733</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="Rewrited client for VOSK STT">
+      <option name="closed" value="true" />
+      <created>1742895430619</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1742895430619</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -286,6 +294,7 @@
     <MESSAGE value="Cleared some import" />
     <MESSAGE value="Created another version of a client with neural STT" />
     <MESSAGE value="Some minor changes" />
-    <option name="LAST_COMMIT_MESSAGE" value="Some minor changes" />
+    <MESSAGE value="Rewrited client for VOSK STT" />
+    <option name="LAST_COMMIT_MESSAGE" value="Rewrited client for VOSK STT" />
   </component>
 </project>

@@ -64,7 +64,7 @@ def select_devices():
             print("Введите числовой номер устройства.")
 
 # Запись аудио
-def record_audio(duration=5, device=None):
+def record_audio(duration=30, device=None):
     try:
         audio = sd.rec(int(duration * SAMPLE_RATE), samplerate=SAMPLE_RATE,
                        channels=1, dtype='int16', device=device)

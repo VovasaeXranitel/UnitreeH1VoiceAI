@@ -4,10 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="20e23f4c-cecb-42de-8e38-531ed969c7de" name="Changes" comment="Rewrited client for VOSK STT">
-      <change afterPath="$PROJECT_DIR$/models/medium.pt" afterDir="false" />
+    <list default="true" id="20e23f4c-cecb-42de-8e38-531ed969c7de" name="Changes" comment="Some minor changes">
+      <change afterPath="$PROJECT_DIR$/Client_For_Robot_With_Salute.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Client_For_Robot_With_Vosk.py" beforeDir="false" afterPath="$PROJECT_DIR$/Client_For_Robot_With_Vosk.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client_For_Robot_Ollama_Test.py" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,6 +53,7 @@
     &quot;Python.Client-Interface.executor&quot;: &quot;Run&quot;,
     &quot;Python.Client_For_Robot.executor&quot;: &quot;Run&quot;,
     &quot;Python.Client_For_Robot_Ollama_Test.executor&quot;: &quot;Run&quot;,
+    &quot;Python.Client_For_Robot_With_Salute.executor&quot;: &quot;Run&quot;,
     &quot;Python.Client_For_Robot_With_Vosk.executor&quot;: &quot;Run&quot;,
     &quot;Python.Database_loader.executor&quot;: &quot;Run&quot;,
     &quot;Python.Info Serializer.executor&quot;: &quot;Run&quot;,
@@ -62,12 +64,13 @@
     &quot;Python.Tokenizer_Downloader_Script.executor&quot;: &quot;Run&quot;,
     &quot;Python.TrainerScript.executor&quot;: &quot;Run&quot;,
     &quot;Python.test.executor&quot;: &quot;Run&quot;,
+    &quot;Python.уа.executor&quot;: &quot;Run&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
     &quot;com.codeium.enabled&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;master&quot;,
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/PyCharmPythonProjects/UpravleniyeRobotamiPredmet&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/PyCharmPythonProjects/UnitreeH1VoiceAI/.venv/Scripts/python.exe&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;
   }
 }</component>
@@ -278,8 +281,27 @@
       <option name="project" value="LOCAL" />
       <updated>1742895430619</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="Some minor changes">
+      <option name="closed" value="true" />
+      <created>1743183657053</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1743183657053</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="123" />
@@ -293,8 +315,8 @@
     <MESSAGE value="Addede audio clearing" />
     <MESSAGE value="Cleared some import" />
     <MESSAGE value="Created another version of a client with neural STT" />
-    <MESSAGE value="Some minor changes" />
     <MESSAGE value="Rewrited client for VOSK STT" />
-    <option name="LAST_COMMIT_MESSAGE" value="Rewrited client for VOSK STT" />
+    <MESSAGE value="Some minor changes" />
+    <option name="LAST_COMMIT_MESSAGE" value="Some minor changes" />
   </component>
 </project>

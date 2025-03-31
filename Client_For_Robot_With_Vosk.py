@@ -5,10 +5,13 @@ import io
 import json
 from vosk import Model, KaldiRecognizer
 
+with open("config.json", encoding="utf-8") as config_file:
+    config = json.load(config_file)
+
 # Конфигурация
-SERVER_URL = "http://192.168.1.100:8000/predict/"
+SERVER_URL = config["LABORATORY_SERVER_URL"]
 SAMPLE_RATE = 16000
-VOSK_MODEL_PATH = r"C:\Users\Vovas\Downloads\Vosk\vosk-model-small-ru-0.22"
+VOSK_MODEL_PATH = config["VOSK_MODEL_FOLDER"]
 model = Model(VOSK_MODEL_PATH)
 
 # Чистый список устройств ввода и вывода

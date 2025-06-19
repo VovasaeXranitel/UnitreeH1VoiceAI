@@ -9,10 +9,12 @@ import io
 import time
 from scipy.io import wavfile
 from scipy.signal import butter, lfilter
+from soundcloud_player import SoundCloudPlayer
 
 # Конфигурация
 SERVER_URL = "http://192.168.1.100:8000/predict/"  # Замените на IP вашего сервера
 SAMPLE_RATE = 44100  # Частота дискретизации
+sc_player = SoundCloudPlayer()
 
 
 # Функции для фильтрации шума
@@ -292,6 +294,16 @@ def chat_with_model():
             input_device, output_device = select_devices()
             print(f"Выбрано устройство ввода ID: {input_device}")
             print(f"Выбрано устройство вывода ID: {output_device}")
+            continue
+        elif user_input.lower().startswith("soundcloud"):
+            query = user_input.partition(" ")[2].strip()
+            if not query:
+                print("Укажите запрос для SoundCloud")
+            else:
+                try:
+                    sc_player.play(query, output_device=output_device)
+                except Exception as e:
+                    print(f"Ошибка SoundCloud: {e}")
             continue
 
         # Отправляем запрос к нейросети
